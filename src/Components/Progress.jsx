@@ -6,7 +6,7 @@ import { useHistory } from "react-router";
 
 function Progress({ file, setFile }) {
   const { progress, url } = useStore(file);
-  const [imageurl, setimageurl] = useContext(urlContext);
+  const [, setimageurl] = useContext(urlContext);
   const history = useHistory();
   if (progress === 100 && url) {
     setFile(null);

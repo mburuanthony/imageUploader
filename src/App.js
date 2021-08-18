@@ -5,6 +5,10 @@ import { HashRouter as Router, Route, Switch } from "react-router-dom";
 import Viewfile from "./Components/Viewfile";
 import { urlContext } from "./context";
 import { imageContext } from "./imageContext";
+import { GlobalStyle, lightTheme, darkTheme } from "./Assets/globalStyles";
+import { useTheme } from "./Hooks/useTheme";
+import ToggleTheme from "./Components/ToggleTheme";
+import { ThemeProvider } from "styled-components";
 
 function App() {
   const imgUrl = useContext(urlContext);
@@ -12,17 +16,25 @@ function App() {
   const [imageurl, setimageurl] = useState(imgUrl);
   const [prevImage, setPrevImage] = useState(previewImage);
 
+  const [theme, toggleTheme] = useTheme();
+
+  const themeMode = theme === "light" ? lightTheme : darkTheme;
+
   return (
     <urlContext.Provider value={[imageurl, setimageurl]}>
       <imageContext.Provider value={[prevImage, setPrevImage]}>
-        <div className="App">
-          <Router>
-            <Switch>
-              <Route path="/" exact component={Form} />
-              <Route path="/preview" component={Viewfile} />
-            </Switch>
-          </Router>
-        </div>
+        <ThemeProvider theme={themeMode}>
+          <div className="App">
+            <GlobalStyle />
+            <ToggleTheme theme={theme} toggleTheme={toggleTheme} />
+            <Router>
+              <Switch>
+                <Route path="/" exact component={Form} />
+                <Route path="/preview" component={Viewfile} />
+              </Switch>
+            </Router>
+          </div>
+        </ThemeProvider>
       </imageContext.Provider>
     </urlContext.Provider>
   );

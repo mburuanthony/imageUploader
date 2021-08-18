@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import Progress from "./Progress";
-import dragImg from "../Assets/Images/photo.png";
+import dragImg from "../Assets/Images/darktheme.png";
 import "../Assets/Styles/Form.scss";
 import { imageContext } from "../imageContext";
 
@@ -36,7 +36,9 @@ function Form() {
           onChange={fileHandler}
         />
         <br />
-        <label htmlFor="image_file">Choose a file</label>
+        <label htmlFor="image_file" className="img_label">
+          Choose a file
+        </label>
       </form>
     </div>
   );

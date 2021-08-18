@@ -34,7 +34,10 @@ function Viewfile() {
       <img src={prevImage} alt="" />
       <div>
         <input type="text" placeholder={imageurl} readOnly="readonly" />
-        <button onClick={() => navigator.clipboard.writeText(imageurl)}>
+        <button
+          className="copy_txt"
+          onClick={() => navigator.clipboard.writeText(imageurl)}
+        >
           Copy link
         </button>
       </div>
