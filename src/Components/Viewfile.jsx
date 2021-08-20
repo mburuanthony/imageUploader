@@ -3,6 +3,7 @@ import "../Assets/Styles/ViewFile.scss";
 import { urlContext } from "../context";
 import { imageContext } from "../imageContext";
 import { useHistory } from "react-router";
+import { toast } from "react-toastify";
 
 function Viewfile() {
   const [imageurl, setimageurl] = useContext(urlContext);
@@ -13,6 +14,11 @@ function Viewfile() {
     setPrevImage(null);
     setimageurl(null);
     history.push("/");
+  };
+
+  const copyText = () => {
+    toast.success("Link copied to clipboard");
+    navigator.clipboard.writeText(imageurl);
   };
 
   if (!prevImage) history.push("/");
@@ -34,10 +40,7 @@ function Viewfile() {
       <img src={prevImage} alt="" />
       <div>
         <input type="text" placeholder={imageurl} readOnly="readonly" />
-        <button
-          className="copy_txt"
-          onClick={() => navigator.clipboard.writeText(imageurl)}
-        >
+        <button className="copy_txt" onClick={copyText}>
           Copy link
         </button>
       </div>

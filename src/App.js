@@ -9,6 +9,8 @@ import { GlobalStyle, lightTheme, darkTheme } from "./Assets/globalStyles";
 import { useTheme } from "./Hooks/useTheme";
 import ToggleTheme from "./Components/ToggleTheme";
 import { ThemeProvider } from "styled-components";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const imgUrl = useContext(urlContext);
@@ -24,6 +26,17 @@ function App() {
     <urlContext.Provider value={[imageurl, setimageurl]}>
       <imageContext.Provider value={[prevImage, setPrevImage]}>
         <ThemeProvider theme={themeMode}>
+          <ToastContainer
+            position="top-center"
+            autoClose={2500}
+            hideProgressBar={true}
+            newestOnTop={true}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+          />
           <div className="App">
             <GlobalStyle />
             <ToggleTheme theme={theme} toggleTheme={toggleTheme} />
