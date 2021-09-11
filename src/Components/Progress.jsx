@@ -17,7 +17,9 @@ function Progress({ file, setFile }) {
   return (
     <div className="progress">
       <span>Uploading...</span>
-      <div id="progress" style={{ width: progress + "%" }}></div>
+      <div style={{ width: "340.71px" }}>
+        <div id="progress" style={{ width: progress + "%" }}></div>
+      </div>
     </div>
   );
 }

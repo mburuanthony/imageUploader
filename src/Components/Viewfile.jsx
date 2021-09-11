@@ -10,12 +10,6 @@ function Viewfile() {
   const [prevImage, setPrevImage] = useContext(imageContext);
   const history = useHistory();
 
-  const goBack = () => {
-    setPrevImage(null);
-    setimageurl(null);
-    history.push("/");
-  };
-
   const copyText = () => {
     toast.success("Link copied to clipboard");
     navigator.clipboard.writeText(imageurl);
@@ -27,12 +21,18 @@ function Viewfile() {
     <div className="ViewFile">
       <span
         className="material-icons"
-        style={{ fontSize: "28px", margin: "10px 0 0 0", color: "green" }}
+        style={{ fontSize: "24px", margin: "10px 0 0 0", color: "#219653" }}
       >
         check_circle
       </span>
       <span
-        style={{ fontSize: "18px", fontWeight: "bold", margin: "10px 0 0 0" }}
+        style={{
+          fontSize: "16px",
+          fontWeight: "500",
+          margin: "10px 0 0 0",
+          color: "#4F4F4F",
+          letterSpacing: "-0.035em",
+        }}
       >
         Uploaded successfully&nbsp;!
       </span>
@@ -44,9 +44,6 @@ function Viewfile() {
           Copy link
         </button>
       </div>
-      <span className="material-icons" id="arrow" onClick={goBack}>
-        arrow_back
-      </span>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import React, { useState, useContext } from "react";
 import Progress from "./Progress";
-import dragImg from "../Assets/Images/darktheme.png";
+import dragImg from "../Assets/Images/image.svg";
 import "../Assets/Styles/Form.scss";
 import { imageContext } from "../imageContext";
 
@@ -25,8 +25,8 @@ function Form() {
     <div className="Form">
       {file && <Progress file={file} setFile={setFile} />}
       <p>Upload your image</p>
-      <div className="prev_img">
-        <img src={file ? prevFile : dragImg} alt="" />
+      <div className="prev_img" style={{ backgroundImage: `url(${dragImg})` }}>
+        <img src={file ? prevFile : file} alt="" />
       </div>
       <form encType="multipart/form-data">
         <input
