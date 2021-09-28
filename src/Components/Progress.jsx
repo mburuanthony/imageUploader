@@ -16,7 +16,14 @@ function Progress({ file, setFile }) {
 
   return (
     <div className="progress">
-      <span>Uploading...</span>
+      <span>
+        Uploading...
+        <a
+          style={{ fontSize: "14px", color: "#09083d", margin: "0 0 0 200px" }}
+        >
+          {Math.floor(progress)}%
+        </a>
+      </span>
       <div style={{ width: "340.71px" }}>
         <div id="progress" style={{ width: progress + "%" }}></div>
       </div>
